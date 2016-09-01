@@ -1,0 +1,27 @@
+{
+  "name": "djPlayer",
+  "description": "media player",
+  "main": "dist/djPlayer",
+  "keywords": [
+    "djcloud","media player", "audio player", "video player"
+  ],
+  "authors": [
+    "Dongjin <odj0220@nate.com>"
+  ],
+  "license": "MIT",
+  "homepage": "www.djcloud.co.kr",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "example",
+    "server"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "jquery-ui": "^1.12.0",
+    "jqueryui-touch-punch": "*"
+  }
+}

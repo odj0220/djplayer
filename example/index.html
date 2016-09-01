@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; minimum-scale=1.0; maximum-scale=1.0; user-scalable=no;">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="../dist/djPlayer.js"></script>
+    <link rel="stylesheet" href="../css/djPlayer.css">
+	<style>
+        *{margin:0; padding:0;}
+        #given{width:450px; padding:15px; height:150px; background-color:#ccc; font-size:14px; margin-bottom:20px; margin-left:30px; margin-top:20px;}
+
+
+    </style>
+</head>
+<body>
+    <div id="given">
+        <ul>
+            <li>Day Day (Feat. 박재범) (Prod. by GRAY) - BewhY (비와이) <button onclick="addMusic('http://www.djcloud.co.kr:8888/music?code=1', 'Day Day (Feat. 박재범) (Prod. by GRAY)', 'BewhY (비와이)', 0, 1)">추가</button></li>
+            <li>Why So Lonely - 원더걸스 (Wonder Girls) <button onclick="addMusic('http://www.djcloud.co.kr:8888/music?code=2', 'Why So Lonely', '원더걸스 (Wonder Girls)', 0, 2)">추가</button></li>
+            <li>CHEER UP - TWICE(트와이스) <button onclick="addMusic('http://www.djcloud.co.kr:8888/music?code=3', 'CHEER UP', 'TWICE(트와이스)', 0, 3)">추가</button></li>
+            <li>Forever (Prod. By GRAY) - BewhY (비와이) <button onclick="addMusic('http://www.djcloud.co.kr:8888/music?code=4', 'Forever (Prod. By GRAY)', 'BewhY (비와이)', 0, 4)">추가</button></li>
+            <li>영상 <button onclick="addMusic('http://www.djcloud.co.kr:8888/movie?code=5', '영상', '', 1, 5)">추가</button></li>
+        </ul>
+    </div>
+    <!--<div id="dj_player_wrap">
+        <div class="topBar">
+            <div class="play_title col-md-9 col-sm-9 col-xs-9">
+                <span></span>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="btn" id="dj_player_resize"><span class="glyphicon glyphicon-resize-small"></span></div>
+                <div class="btn" id="dj_player_close"><span class="glyphicon glyphicon-remove"></span></div>
+            </div>
+        </div>
+        <div id="dj_player_screen">
+            <img id="dj_player_cover" src border="10">
+            <video id="dj_player_video" src autoplay="" data-setup="{}"></video>
+            <div id="dj_player_controls">
+                <div>
+                    <div class="col-md-7 col-sm-7 col-xs-7" id="dj_player_time">
+                        <div class="dj_player_progress">
+                            <div class="dj_player_buffer"></div>
+                            <div class="dj_player_bar"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5 txar" id="dj_player_volume">
+                        <div class="btn btn-default btn-circle" id="dpc_mute"><span class="glyphicon glyphicon-volume-up"></span></div>
+                        &lt;!&ndash;<div><input type="range" id="dpc_volume" min="0" max="1" step="0.1" value="1"></div>&ndash;&gt;
+                        <div class="dj_player_progress">
+                            <div class="dj_player_bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="col-md-8 col-sm-8 col-xs-8 pr0">
+                        <div class="btn btn-default btn-circle" id="dpc_prev"><span class="glyphicon glyphicon-step-backward"></span></div>
+                        <div class="btn btn-default btn-circle" id="dpc_pause"><span class="glyphicon glyphicon-play"></span></div>
+                        <div class="btn btn-default btn-circle" id="dpc_next"><span class="glyphicon glyphicon-step-forward"></span></div>
+                        <span id="dj_player_running">00:00 - 00:00</span>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 txar pl0">
+                        <div class="btn btn-default btn-circle" id="dpc_repeat"><span class="glyphicon glyphicon-repeat">A</span></div>
+                        <div class="btn btn-default btn-circle" id="dpc_shuffle"><span class="glyphicon glyphicon-random"></span></div>
+                        <div class="btn btn-default btn-circle" id="dpc_full_screen"><span class="glyphicon glyphicon-fullscreen"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="playList">
+            <ul id="dj_player_list">
+            </ul>
+        </div>
+    </div>-->
+
+
+
+
+<script>
+    $(document).ready(function(){
+        djPlayer.cover = function(code, elem){
+            $.ajax({
+                url: 'http://www.djcloud.co.kr:8888/tag?code='+code,
+                data: {
+                    format: 'json'
+                },
+                error: function(err) {
+                    console.log(err)
+                },
+                dataType: 'jsonp',
+                success: function(data) {
+                    elem.src = data.picture;
+                },
+                type: 'GET'
+            });
+        }
+    });
+
+    function addMusic(url, title, artist, type, code){
+        djPlayer.add(url,title,artist, type, code);
+    };
+
+
+    function playMusic(code){
+        $("#play").attr("src", 'http://www.djcloud.co.kr:8888/music?code='+code);
+        $.ajax({
+            url: 'http://www.djcloud.co.kr:8888/tag?code='+code,
+            data: {
+                format: 'json'
+            },
+            error: function(err) {
+                console.log(err)
+            },
+            dataType: 'jsonp',
+            success: function(data) {
+                $("#cover").attr("src", data.picture);
+            },
+            type: 'GET'
+        });
+    }
+</script>
+</body>
+</html>
