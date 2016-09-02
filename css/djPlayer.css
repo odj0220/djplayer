@@ -1,7 +1,7 @@
 .txar{text-align: right;}
 .pr0 {padding-right: 0;}
 .pl0 {padding-left: 0;}
-#dj_player_wrap{width: 350px; height: 500px; border:1px solid #333; background-color:#eee; font-size:14px; overflow:hidden; position: absolute;}
+#dj_player_wrap{width: 350px; height: 500px; border:1px solid #333; background-color:#eee; font-size:14px; overflow:hidden; position: fixed; top:10%; left:0; right: 0; margin: auto;}
 #dj_player_wrap li{list-style:none;}
 #dj_player_wrap .topBar{width: 100%; height: 30px; background-color:#333; text-align: right; color: #fff; cursor: move;}
 #dj_player_wrap .topBar div{height: 100%; padding: 0 5px;}
