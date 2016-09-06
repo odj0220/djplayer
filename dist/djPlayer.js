@@ -71,7 +71,6 @@
             var selectObj;
             if(!url) selectObj = djPlayer.list[0];
             else selectObj = findKey(djPlayer.list, {'url': url});
-            console.log(selectObj);
 
             if(!selectObj.type){
                 cover.css('display', 'block');
@@ -173,6 +172,7 @@
         };
 
         djPlayer.close = function(){
+            djPlayer.reset();
             document.body.removeChild(document.getElementById('dj_player_wrap'));
         };
 
@@ -447,19 +447,21 @@
         // 버퍼 시작
         function startBuffer() {
             var video = document.getElementById("dj_player_video");
-            var maxduration = video.duration;
-            var currentBuffer = 0;
-            if(video.buffered.length){
-                currentBuffer = video.buffered.end(0);
-                var percentage = 100 * currentBuffer / maxduration;
-                if(percentage > 100) percentage = 100;
-                if(percentage < 0) percentage = 0;
-                $('.dj_player_buffer').css('width', percentage+'%');
-            }
-            if(currentBuffer < maxduration || !maxduration) {
-                setTimeout(function(){
-                    startBuffer()
-                }, 500);
+            if(video){
+                var maxduration = video.duration;
+                var currentBuffer = 0;
+                if(video.buffered.length){
+                    currentBuffer = video.buffered.end(0);
+                    var percentage = 100 * currentBuffer / maxduration;
+                    if(percentage > 100) percentage = 100;
+                    if(percentage < 0) percentage = 0;
+                    $('.dj_player_buffer').css('width', percentage+'%');
+                }
+                if(currentBuffer < maxduration || !maxduration) {
+                    setTimeout(function(){
+                        startBuffer()
+                    }, 500);
+                }
             }
         };
 
