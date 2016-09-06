@@ -1,7 +1,7 @@
 .txar{text-align: right;}
 .pr0 {padding-right: 0;}
 .pl0 {padding-left: 0;}
-#dj_player_wrap{width: 350px; height: 500px; border:1px solid #333; background-color:#eee; font-size:14px; overflow:hidden; position: fixed; top:10%; left:0; right: 0; margin: auto;}
+#dj_player_wrap{z-index: 1100; width: 350px; height: 500px; border:1px solid #333; background-color:#eee; font-size:14px; overflow:hidden; position: fixed; top:10%; left:0; right: 0; margin: auto;}
 #dj_player_wrap li{list-style:none;}
 #dj_player_wrap .topBar{width: 100%; height: 30px; background-color:#333; text-align: right; color: #fff; cursor: move;}
 #dj_player_wrap .topBar div{height: 100%; padding: 0 5px;}
@@ -14,7 +14,7 @@
 #dj_player_screen video{width:100%; height: 100%}
 #dj_player_controls{position: absolute; bottom: 0; width: 100%;}
 
-#dj_player_wrap .playList{width: 100%; height: inherit; background-color:#333; overflow:auto;}
+#dj_player_wrap .playList{width: 100%; height: 218px; background-color:#333; overflow:auto;}
 #dj_player_wrap .playList ul{width:100%; padding: 5px 15px;}
 #dj_player_wrap .playList ul li{width:100%; height:23px; line-height:23px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin: 5px 0;}
 #dj_player_wrap .playList ul li a {color: #fff; text-decoration: none;}
