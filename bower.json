@@ -8,6 +8,7 @@
   "authors": [
     "Dongjin <odj0220@nate.com>"
   ],
+  "version": "0.1.1",
   "license": "MIT",
   "homepage": "www.djcloud.co.kr",
   "ignore": [
